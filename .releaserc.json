@@ -1,8 +1,8 @@
 {
   "branches": [
     "main",
-    { "name": "feature/*", "prerelease": "rc" },
-    { "name": "release/*", "prerelease": "rc" }
+    { "name": "release", "prerelease": "rc" },
+    { "name": "feature/*", "prerelease": true }
   ],
   "tagFormat": "v${version}",
   "plugins": [
