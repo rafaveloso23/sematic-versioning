@@ -40,6 +40,7 @@ jobs:
           node-version: '20'
 
       - name: Install deps (prefer ci)
+        working-directory: .github
         run: |
           if [ -f package-lock.json ]; then
             npm ci
