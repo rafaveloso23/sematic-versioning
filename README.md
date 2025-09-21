@@ -1,1 +1,1 @@
-# sematic-versioning
+# sematic-versionin
