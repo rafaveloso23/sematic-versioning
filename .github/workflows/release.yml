@@ -40,7 +40,6 @@ jobs:
           node-version: '20'
 
       - name: Install deps (prefer ci)
-        working-directory: .github
         run: |
           if [ -f package-lock.json ]; then
             npm ci
@@ -59,6 +58,5 @@ jobs:
           fi
 
       - name: semantic-release (usa config do .releaserc.json no raiz)
-        working-directory: .github            # <- ADICIONE ESTA LINHA
         run: npx semantic-release ${{ steps.flags.outputs.args }}
 
