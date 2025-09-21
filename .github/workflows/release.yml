@@ -39,14 +39,13 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install deps (prefer ci)
-        working-directory: .github
+      - name: Install deps (em .github)
         run: |
-          if [ -f package-lock.json ]; then
-            npm ci
+          if [ -f .github/package-lock.json ]; then
+            npm ci --prefix .github
           else
-            echo "package-lock.json não encontrado; usando npm install"
-            npm install --no-audit --no-fund
+            echo "package-lock.json não encontrado em .github; usando npm install"
+            npm install --no-audit --no-fund --prefix .github
           fi
 
       - name: Dry run flag
@@ -58,6 +57,11 @@ jobs:
             echo "args=" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: semantic-release (usa config do .releaserc.json no raiz)
-        run: npx semantic-release ${{ steps.flags.outputs.args }}
+      - name: Diagnose plugins
+        run: |
+          node -e "console.log('CWD=', process.cwd())"
+          node -e "console.log('resolve changelog=', require.resolve('@semantic-release/changelog', { paths: ['.github'] }))"
+
+      - name: semantic-release (usa .releaserc.json do RAIZ)
+        run: npx --prefix .github semantic-release ${{ steps.flags.outputs.args }}
 
