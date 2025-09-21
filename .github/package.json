@@ -7,7 +7,7 @@
     "release:dry": "semantic-release --dry-run"
   },
   "devDependencies": {
-    "semantic-release": "^24.0.0",
+    "semantic-release": "^24.2.9",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/commit-analyzer": "^13.0.0",
     "@semantic-release/release-notes-generator": "^12.0.0",
@@ -61,25 +61,9 @@
           }
         }
       ],
-      [
-        "@semantic-release/changelog",
-        {
-          "changelogFile": "CHANGELOG.md"
-        }
-      ],
-      [
-        "@semantic-release/git",
-        {
-          "assets": ["CHANGELOG.md"],
-          "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
-        }
-      ],
-      [
-        "@semantic-release/github",
-        {
-          "assets": []
-        }
-      ]
+      [ "@semantic-release/changelog", { "changelogFile": "CHANGELOG.md" } ],
+      [ "@semantic-release/git", { "assets": ["CHANGELOG.md"], "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}" } ],
+      [ "@semantic-release/github", { "assets": [] } ]
     ]
   }
 }
