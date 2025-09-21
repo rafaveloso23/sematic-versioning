@@ -1,13 +1,11 @@
 {
   "branches": [
     "main",
-    { "name": "release", "prerelease": "rc" },
-    { "name": "feature/*", "prerelease": true }
+    { "name": "release", "prerelease": "rc" }
   ],
   "tagFormat": "v${version}",
   "plugins": [
-    ["@semantic-release/commit-analyzer", {
-      "preset": "conventionalcommits",
+    ["@semantic-release/commit-analyzer", { "preset": "conventionalcommits",
       "releaseRules": [
         { "type": "feat", "release": "minor" },
         { "type": "fix", "release": "patch" },
@@ -38,10 +36,7 @@
       }
     }],
     ["@semantic-release/changelog", { "changelogFile": ".github/CHANGELOG.md" }],
-    ["@semantic-release/git", {
-      "assets": [".github/CHANGELOG.md"],
-      "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
-    }],
+    ["@semantic-release/git", { "assets": [".github/CHANGELOG.md"], "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}" }],
     ["@semantic-release/github", { "assets": [] }]
   ]
 }
