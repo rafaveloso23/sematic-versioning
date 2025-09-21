@@ -1,0 +1,57 @@
+name: Release (semantic-release encapsulado)
+
+on:
+  push:
+    branches:
+      - main
+      - 'feature/**'
+      - 'release/**'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Executar em modo dry-run (não publica tag/release)"
+        type: boolean
+        default: false
+      force_bump:
+        description: "Forçar tipo de bump (major|minor|patch) - opcional"
+        type: choice
+        required: false
+        options: ['', major, minor, patch]
+
+permissions:
+  contents: write
+  pull-requests: read
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      FORCE_BUMP: ${{ github.event.inputs.force_bump }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install deps
+        working-directory: .github/workflows/semantic
+        run: npm ci
+
+      - name: Dry run flag
+        id: flags
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.dry_run }}" = "true" ]; then
+            echo "args=--dry-run" >> "$GITHUB_OUTPUT"
+          else
+            echo "args=" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: semantic-release
+        working-directory: .github/workflows/semantic
+        run: npx semantic-release ${{ steps.flags.outputs.args }}
