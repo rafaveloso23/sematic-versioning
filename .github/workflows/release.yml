@@ -58,5 +58,7 @@ jobs:
             echo "args=" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: semantic-release
+      - name: semantic-release (usa config do .releaserc.json no raiz)
+        working-directory: .github            # <- ADICIONE ESTA LINHA
         run: npx semantic-release ${{ steps.flags.outputs.args }}
+
