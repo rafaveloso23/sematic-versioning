@@ -1,15 +1,12 @@
 {
-  "name": "semantic-release-capsulated",
+  "name": "seu-repo",
   "private": true,
   "version": "0.0.0-development",
   "type": "module",
   "scripts": {
-    "commitlint": "commitlint --from=origin/main --to=HEAD",
     "release:dry": "semantic-release --dry-run"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.5.0",
-    "@commitlint/config-conventional": "^19.5.0",
     "semantic-release": "^24.0.0",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/commit-analyzer": "^13.0.0",
@@ -67,13 +64,13 @@
       [
         "@semantic-release/changelog",
         {
-          "changelogFile": "../../CHANGELOG.md"
+          "changelogFile": "CHANGELOG.md"
         }
       ],
       [
         "@semantic-release/git",
         {
-          "assets": ["../../CHANGELOG.md"],
+          "assets": ["CHANGELOG.md"],
           "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
         }
       ],
