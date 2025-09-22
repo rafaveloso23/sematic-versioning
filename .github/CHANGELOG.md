@@ -1,3 +1,18 @@
+## 1.1.0 (2025-09-22)
+
+* add ([93e72a3](https://github.com/rafaveloso23/sematic-versioning/commit/93e72a3))
+* add ([012a224](https://github.com/rafaveloso23/sematic-versioning/commit/012a224))
+* add ([e49e7a0](https://github.com/rafaveloso23/sematic-versioning/commit/e49e7a0))
+* add ([40ae2f3](https://github.com/rafaveloso23/sematic-versioning/commit/40ae2f3))
+* Merge pull request #4 from rafaveloso23/feature/rvs ([93d43d0](https://github.com/rafaveloso23/sematic-versioning/commit/93d43d0)), closes [#4](https://github.com/rafaveloso23/sematic-versioning/issues/4)
+* Merge pull request #5 from rafaveloso23/feature/teste-release ([f5ca467](https://github.com/rafaveloso23/sematic-versioning/commit/f5ca467)), closes [#5](https://github.com/rafaveloso23/sematic-versioning/issues/5)
+* Merge pull request #6 from rafaveloso23/feature/novo-release ([2029e19](https://github.com/rafaveloso23/sematic-versioning/commit/2029e19)), closes [#6](https://github.com/rafaveloso23/sematic-versioning/issues/6)
+* Merge pull request #7 from rafaveloso23/feature/novo-release ([8988a75](https://github.com/rafaveloso23/sematic-versioning/commit/8988a75)), closes [#7](https://github.com/rafaveloso23/sematic-versioning/issues/7)
+* Merge pull request #8 from rafaveloso23/feature/novo-release ([06267b8](https://github.com/rafaveloso23/sematic-versioning/commit/06267b8)), closes [#8](https://github.com/rafaveloso23/sematic-versioning/issues/8)
+* Merge pull request #9 from rafaveloso23/release ([786a38d](https://github.com/rafaveloso23/sematic-versioning/commit/786a38d)), closes [#9](https://github.com/rafaveloso23/sematic-versioning/issues/9)
+* chore(release): 1.1.0-rc.1 [skip ci] ([a402eca](https://github.com/rafaveloso23/sematic-versioning/commit/a402eca))
+* feat(user): add profile picture support ([599fa68](https://github.com/rafaveloso23/sematic-versioning/commit/599fa68))
+
 ## 1.1.0-rc.1 (2025-09-22)
 
 * add ([93e72a3](https://github.com/rafaveloso23/sematic-versioning/commit/93e72a3))
