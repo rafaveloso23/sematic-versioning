@@ -4,8 +4,7 @@ on:
   push:
     branches:
       - main
-      - 'feature/**'
-      - 'release/**'
+      - 'release'
   workflow_dispatch:
     inputs:
       dry_run:
