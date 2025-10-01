@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   retag-alpha:
-    if: startsWith(github.event.release.target_commitish, 'feature/')
+    if: contains(github.event.release.tag_name, 'v') && !contains(github.event.release.tag_name, '-')
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ secrets.RELEASE_PLEASE_TOKEN }}
