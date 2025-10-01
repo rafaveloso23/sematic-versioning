@@ -1,0 +1,21 @@
+name: release-please (beta from develop)
+
+on:
+  push:
+    branches: [develop]
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  beta:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: googleapis/release-please-action@v4
+        with:
+          token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
+          target-branch: develop
+          config-file: release-please-config.beta.json
+          manifest-file: .release-please-manifest.json
