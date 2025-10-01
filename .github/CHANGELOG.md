@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.0](https://github.com/rafaveloso23/sematic-versioning/compare/v0.8.0...v0.9.0) (2025-10-01)
+
+
+### Features
+
+* novos testervs ([b8f1d36](https://github.com/rafaveloso23/sematic-versioning/commit/b8f1d366f8830db23cf06c328eda564a9c95b387))
+
 ## [0.8.0](https://github.com/rafaveloso23/sematic-versioning/compare/v0.7.0...v0.8.0) (2025-10-01)
 
 
