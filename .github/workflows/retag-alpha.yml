@@ -1,0 +1,56 @@
+name: retag alpha release
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  retag-alpha:
+    # só roda se a tag publicada não tiver sufixo (ex: v1.2.3)
+    if: contains(github.event.release.tag_name, 'v') && !contains(github.event.release.tag_name, '-')
+    runs-on: ubuntu-latest
+    env:
+      REPO: ${{ github.repository }}
+      OLD_TAG: ${{ github.event.release.tag_name }}
+      GH_TOKEN: ${{ secrets.RELEASE_PLEASE_TOKEN }} # ou use secrets.GITHUB_TOKEN
+    steps:
+      - name: Retag release as alpha
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          # Git identity
+          git config --global user.name  "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Repositório "vazio" com remote autenticado
+          git init
+          git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git"
+
+          # Sincroniza tags locais
+          git fetch --tags --force --prune origin
+
+          # Calcula próximo sufixo alpha (vX.Y.Z-alpha.N)
+          COUNT=$(git tag -l "${OLD_TAG}-alpha.*" | wc -l | tr -d ' ')
+          N=$((COUNT+1))
+          NEW_TAG="${OLD_TAG}-alpha.${N}"
+
+          echo "Renomeando tag ${OLD_TAG} -> ${NEW_TAG}"
+
+          # Resolve commit da tag original e cria a nova tag
+          COMMIT=$(git rev-list -n 1 "${OLD_TAG}")
+          git tag -f "${NEW_TAG}" "${COMMIT}"
+
+          # Publica nova tag e remove a antiga
+          git push origin "refs/tags/${NEW_TAG}"
+          git push origin ":refs/tags/${OLD_TAG}"
+
+          # Atualiza o GitHub Release para apontar para a nova tag e marcar como pre-release
+          gh api \
+            -X PATCH \
+            "repos/${REPO}/releases/${{ github.event.release.id }}" \
+            -f tag_name="${NEW_TAG}" \
+            -f prerelease=true

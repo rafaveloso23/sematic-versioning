@@ -1,5 +1,26 @@
 # Changelog
 
+## [0.5.0](https://github.com/rafaveloso23/sematic-versioning/compare/v0.4.0...v0.5.0) (2025-10-01)
+
+
+### Features
+
+* novos ajustes ([f7ed68b](https://github.com/rafaveloso23/sematic-versioning/commit/f7ed68bc0f05007e3f1e4d25fd7b95295843f67c))
+
+## [0.4.0](https://github.com/rafaveloso23/sematic-versioning/compare/v0.3.0...v0.4.0) (2025-10-01)
+
+
+### Features
+
+* add ([1e19c72](https://github.com/rafaveloso23/sematic-versioning/commit/1e19c729215444256e6ac849949f4a2f4f1a6841))
+
+## [0.3.0](https://github.com/rafaveloso23/sematic-versioning/compare/v0.2.0...v0.3.0) (2025-10-01)
+
+
+### Features
+
+* ajustes feitos ([749c20d](https://github.com/rafaveloso23/sematic-versioning/commit/749c20dab08bb1b15669d3749d155f5e9989822a))
+
 ## 0.1.0 (2025-10-01)
 
 
