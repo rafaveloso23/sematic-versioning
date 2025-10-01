@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.0](https://github.com/rafaveloso23/sematic-versioning/compare/v0.9.0...v0.10.0) (2025-10-01)
+
+
+### Features
+
+* testenovorv ([d988b1b](https://github.com/rafaveloso23/sematic-versioning/commit/d988b1b4be64961cd0f76560c5b8d1c11c861ed4))
+
 ## [0.9.0](https://github.com/rafaveloso23/sematic-versioning/compare/v0.8.0...v0.9.0) (2025-10-01)
 
 
