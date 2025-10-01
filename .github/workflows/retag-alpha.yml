@@ -1,0 +1,43 @@
+name: retag alpha release
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  retag-alpha:
+    if: startsWith(github.event.release.target_commitish, 'feature/')
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.RELEASE_PLEASE_TOKEN }}
+    steps:
+      - name: Retag release as alpha
+        run: |
+          OLD_TAG="${{ github.event.release.tag_name }}"   # ex: v1.0.0
+          BRANCH="${{ github.event.release.target_commitish }}"
+          REPO="${{ github.repository }}"
+          # calcula número sequencial do alpha (incrementa se já existirem)
+          git init
+          git remote add origin "https://github.com/$REPO.git"
+          git fetch --tags origin
+          COUNT=$(git tag -l "${OLD_TAG}-alpha.*" | wc -l | tr -d ' ')
+          N=$((COUNT+1))
+          NEW_TAG="${OLD_TAG}-alpha.${N}"
+
+          echo "Renomeando tag $OLD_TAG -> $NEW_TAG"
+
+          # recria tag com sufixo alpha e apaga a original
+          COMMIT=$(git rev-list -n 1 "$OLD_TAG")
+          git tag -f "$NEW_TAG" "$COMMIT"
+          git push origin "refs/tags/$NEW_TAG"
+          git push origin ":refs/tags/$OLD_TAG"
+
+          # atualiza o GitHub Release para apontar para a nova tag e marcar como pre-release
+          gh api \
+            -X PATCH \
+            repos/$REPO/releases/${{ github.event.release.id }} \
+            -f tag_name="$NEW_TAG" \
+            -f prerelease=true
