@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/rafaveloso23/sematic-versioning/compare/v0.3.0...v0.4.0) (2025-10-01)
+
+
+### Features
+
+* add ([1e19c72](https://github.com/rafaveloso23/sematic-versioning/commit/1e19c729215444256e6ac849949f4a2f4f1a6841))
+
 ## [0.3.0](https://github.com/rafaveloso23/sematic-versioning/compare/v0.2.0...v0.3.0) (2025-10-01)
 
 
